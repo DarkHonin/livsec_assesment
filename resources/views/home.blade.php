@@ -4,7 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <groceries-component />
+            @if(Auth::user())
+                <groceries-component />
+            @else
+                Welcome
+            @endif
         </div>
     </div>
 </div>

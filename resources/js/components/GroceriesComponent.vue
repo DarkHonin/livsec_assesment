@@ -18,17 +18,19 @@
                 </div>
             </div>
         </div>
-        <div class='list-group'>
-            <label class='list-group-item' v-for='(i, k) in items' v-bind:key='k'>
-                <div class='card-title d-flex align-items-center'>
-                    <input class="form-check-input me-1" type="checkbox" v-model='i.checked' @change="updateItem(k)" id="flexCheckDefault">
-                    <span>{{i.name}}</span>
-                </div>
+        <div class='d-flex flex-wrap justify-content-start my-2'>
+            <label class='card border-dark bg-dark m-1 w-25 text-light' v-for='(i, k) in items' v-bind:key='k'>
                 <div class='card-body'>
+                    <div class='card-title d-flex align-items-center'>
+                        <span>{{i.name}}</span>
+                    </div>
                     <span>Quantity: </span>
                     <span>{{i.quantity}}</span>
                 </div>
-                <button type="button" class="btn btn-danger" @click='deleteItem(k)'>Delete</button>
+                <div class='d-flex justify-content-between my-2 mx-1 bg-dark'>
+                    <button :class='(i.checked ? "btn-success" : "btn-secondary") + " w-50 btn"' @click='i.checked = !i.checked; updateItem(k)'>Checked</button>
+                    <button type="button" class="btn btn-danger" @click='deleteItem(k)'>Delete</button>
+                </div>
             </label>
         </div>
     </div>
